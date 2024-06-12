@@ -13,17 +13,6 @@ jobs:
       - name: Vet
         run: |
           go vet ./...
-  # Задание проверяет код на соответствие стилю и отсутствие логических ошибок
-  lint:
-    # Задание "lint" зависит от заданий "tests" и "tests-race" и будет выполнено после них
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-go@v4
-      # Используется действие "golangci/golangci-lint-action@v3", которое запускает линтер. Он проверит код на соответствие стилю и отсутствие логических ошибок
-      - uses: golangci/golangci-lint-action@v3
-
   deploy:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
