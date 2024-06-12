@@ -3,10 +3,11 @@ on: push
 jobs:
   # Задание проверяет код на соответствие стилю и отсутствие логических ошибок
   lint:
-    # Задание "lint" зависит от заданий "tests" и "tests-race" и будет выполнено после них
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-go@v4
       # Используется действие "golangci/golangci-lint-action@v3", которое запускает линтер. Он проверит код на соответствие стилю и отсутствие логических ошибок
-      - uses: golangci/golangci-lint-action@v3
+      - uses: golangci/golangci-lint-action@v6
+        with:
+          version: v1.58
